@@ -12,6 +12,9 @@
  * @version  1.0.4
  * @link     http://github.com/j7mbo/twitter-api-php
  */
+
+namespace j7mbo\twitter_api_php;
+
 class TwitterAPIExchange
 {
     /**
