@@ -13,7 +13,7 @@
  * @link     http://github.com/GrandMasterX/twitter-api-php
  */
 
-namespace GrandMasterX\twitter_api_php;
+namespace grandmasterx\twitter_api_php;
 
 class TwitterAPIExchange
 {

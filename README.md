@@ -35,7 +35,7 @@ Installation
 
     {
         "require": {
-            "j7mbo/twitter-api-php": "dev-master"
+            "grandmasterx/twitter-api-php": "dev-master"
         }
     }
 
@@ -47,7 +47,7 @@ How To Use
 #### Include the class file ####
 
 ```php
-require_once('TwitterAPIExchange.php');
+use grandmasterx\TwitterAPIExchange;
 ```
 
 #### Set access tokens ####
