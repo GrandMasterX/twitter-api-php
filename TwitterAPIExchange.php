@@ -7,13 +7,13 @@
  * 
  * @category Awesomeness
  * @package  Twitter-API-PHP
- * @author   James Mallison <me@j7mbo.co.uk>
+ * @author   GrandMasterX <zgrandmasterz@gmail.com>
  * @license  MIT License
  * @version  1.0.4
- * @link     http://github.com/j7mbo/twitter-api-php
+ * @link     http://github.com/GrandMasterX/twitter-api-php
  */
 
-namespace j7mbo\twitter_api_php;
+namespace GrandMasterX\twitter_api_php;
 
 class TwitterAPIExchange
 {
