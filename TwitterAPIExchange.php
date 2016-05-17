@@ -15,6 +15,12 @@
 
 namespace grandmasterx\twitter_api_php;
 
+use Exception;
+
+/**
+ * Class TwitterAPIExchange
+ * @package grandmasterx\twitter_api_php
+ */
 class TwitterAPIExchange
 {
     /**
@@ -384,4 +390,20 @@ class TwitterAPIExchange
 
         return $this->buildOauth($url, $method)->performRequest(true, $curlOptions);
     }
+
+    /**
+     * method that drops some class variables
+     * @param string $which
+     * @return $this
+     * @throws Exception
+     */
+    public function dropParams($which = 'getfield') {
+        if(!isset($this->$which)) {
+            throw new Exception('no such variable declared in ' . __CLASS__);
+        }
+
+        $this->$which = NULL;
+        return $this;
+    }
 }
+
