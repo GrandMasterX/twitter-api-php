@@ -1,5 +1,8 @@
 <?php
 
+namespace yiiunit\extensions\twitter_api_php;
+
+use grandmasterx\twitter_api_php\TwitterAPIExchange;
 /**
  * Class TwitterAPIExchangeTest
  *
@@ -30,7 +33,7 @@ class TwitterAPIExchangeTest extends \PHPUnit_Framework_TestCase
     const OAUTH_ACCESS_TOKEN_SECRET = 'EYrFp0lfNajBslYV3WgAGmpHqYZvvNxP5uxxSq8Dbs1wa';
 
     /**
-     * @var \TwitterAPIExchange
+     * @var TwitterAPIExchange
      */
     protected $exchange;
 
@@ -59,7 +62,7 @@ class TwitterAPIExchangeTest extends \PHPUnit_Framework_TestCase
             $settings[strtolower($key)] = $value;
         }
 
-        $this->exchange = new \TwitterAPIExchange($settings);
+        $this->exchange = new TwitterAPIExchange($settings);
     }
 
     /**

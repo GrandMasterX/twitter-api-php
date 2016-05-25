@@ -68,8 +68,14 @@ class TwitterAPIExchange
      */
     public $requestMethod;
 
+    /**
+     *
+     */
     const GET = 'GET';
 
+    /**
+     *
+     */
     const POST = 'POST';
 
     /**
@@ -395,12 +401,26 @@ class TwitterAPIExchange
         return $this->buildOauth($url, $method)->performRequest(true, $curlOptions);
     }
 
+    /**
+     * @param $url
+     * @param $params
+     * @param array $curlOptions
+     * @return mixed
+     * @throws Exception
+     */
     public function get($url, $params, $curlOptions = array()) {
         $this->dropParams('postfields');
         $this->setGetfield($params);
         return $this->buildOauth($url, self::GET)->performRequest(true, $curlOptions);
     }
 
+    /**
+     * @param $url
+     * @param $params
+     * @param array $curlOptions
+     * @return mixed
+     * @throws Exception
+     */
     public function post($url, $params, $curlOptions = array()) {
         $this->dropParams('getfield');
         $this->setPostfields($params);
@@ -415,7 +435,7 @@ class TwitterAPIExchange
      * @throws Exception
      */
     public function dropParams($which = 'getfield') {
-        if(!isset($this->$which)) {
+        if(!property_exists($this, $which)) {
             throw new Exception('no such variable declared in ' . __CLASS__);
         }
 
