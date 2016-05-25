@@ -68,6 +68,10 @@ class TwitterAPIExchange
      */
     public $requestMethod;
 
+    const GET = 'GET';
+
+    const POST = 'POST';
+
     /**
      * Create the API access object. Requires an array of settings::
      * oauth access token, oauth access token secret, consumer key, consumer secret
@@ -390,6 +394,19 @@ class TwitterAPIExchange
 
         return $this->buildOauth($url, $method)->performRequest(true, $curlOptions);
     }
+
+    public function get($url, $params, $curlOptions = array()) {
+        $this->dropParams('postfields');
+        $this->setGetfield($params);
+        return $this->buildOauth($url, self::GET)->performRequest(true, $curlOptions);
+    }
+
+    public function post($url, $params, $curlOptions = array()) {
+        $this->dropParams('getfield');
+        $this->setPostfields($params);
+        return $this->buildOauth($url, self::POST)->performRequest(true, $curlOptions);
+    }
+
 
     /**
      * method that drops some class variables
