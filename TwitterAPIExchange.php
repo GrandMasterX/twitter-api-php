@@ -112,14 +112,12 @@ class TwitterAPIExchange
 
     /**
      * Set postfields array, example: array('screen_name' => 'J7mbo')
-     *
-     * @param array $array Array of parameters to send to API
-     *
+     * @param array $array Array/Object of parameters to send to API
+     * if you use Object you must implement __get($name) function
      * @throws \Exception When you are trying to set both get and post fields
-     *
      * @return TwitterAPIExchange Instance of self for method chaining
      */
-    public function setPostfields(array $array)
+    public function setPostfields($array)
     {
         if (!is_null($this->getGetfield()))
         {
