@@ -112,9 +112,11 @@ class TwitterAPIExchange
 
     /**
      * Set postfields array, example: array('screen_name' => 'J7mbo')
-     * @param array $array Array/Object of parameters to send to API
-     * if you use Object you must implement __get($name) function
+     *
+     * @param array $array Array of parameters to send to API
+     *
      * @throws \Exception When you are trying to set both get and post fields
+     *
      * @return TwitterAPIExchange Instance of self for method chaining
      */
     public function setPostfields($array)
@@ -137,7 +139,13 @@ class TwitterAPIExchange
             }
         }
 
-        $this->postfields = $array;
+        if(is_object($array)) {
+            $array = $array->toArray();
+        }
+
+        $this->postfields = array_filter($array, function($el) {
+            return !empty($el);
+        });
 
         // rebuild oAuth
         if (isset($this->oauth['oauth_signature'])) {
