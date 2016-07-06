@@ -16,7 +16,6 @@
 namespace grandmasterx\twitter_api_php;
 
 use Exception;
-use yii\helpers\Json;
 
 /**
  * Class TwitterAPIExchange
@@ -124,6 +123,10 @@ class TwitterAPIExchange
             throw new Exception('You can only choose get OR post fields.');
         }
 
+        if(is_object($array)) {
+            $array = json_decode(json_encode($array), true);
+        }
+
         if (isset($array['status']) && substr($array['status'], 0, 1) === '@') {
             $array['status'] = sprintf("\0%s", $array['status']);
         }
@@ -132,10 +135,6 @@ class TwitterAPIExchange
             if (is_bool($value)) {
                 $value = ($value === true) ? 'true' : 'false';
             }
-        }
-
-        if(is_object($array)) {
-            $array = $array->toArray();
         }
 
         $this->postfields = array_filter($array, function($el) {
