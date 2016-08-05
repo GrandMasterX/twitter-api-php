@@ -78,6 +78,8 @@ class TwitterAPIExchange
      */
     const POST = 'POST';
 
+    public $user_entity;
+
     /**
      * Create the API access object. Requires an array of settings::
      * oauth access token, oauth access token secret, consumer key, consumer secret
@@ -106,6 +108,7 @@ class TwitterAPIExchange
         $this->oauth_access_token_secret = $settings['oauth_access_token_secret'];
         $this->consumer_key = $settings['consumer_key'];
         $this->consumer_secret = $settings['consumer_secret'];
+        $this->user_entity = $settings;
     }
 
     /**
